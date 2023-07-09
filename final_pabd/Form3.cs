@@ -16,5 +16,10 @@ namespace final_pabd
         {
             InitializeComponent();
         }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
