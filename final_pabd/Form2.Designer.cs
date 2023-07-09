@@ -135,29 +135,29 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(472, 334);
+            this.button1.Location = new System.Drawing.Point(233, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 32);
             this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
+            this.button1.Text = "INSERT";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(588, 334);
+            this.button2.Location = new System.Drawing.Point(377, 383);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 32);
             this.button2.TabIndex = 12;
-            this.button2.Text = "button2";
+            this.button2.Text = "DELETE";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(715, 334);
+            this.button3.Location = new System.Drawing.Point(523, 383);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 32);
             this.button3.TabIndex = 13;
-            this.button3.Text = "button3";
+            this.button3.Text = "UPDATE";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // Form2
