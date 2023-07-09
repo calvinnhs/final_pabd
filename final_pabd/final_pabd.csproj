@@ -58,6 +58,12 @@
     <Compile Include="Form_DataDiri.Designer.cs">
       <DependentUpon>Form_DataDiri.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Order.Designer.cs">
+      <DependentUpon>Form_Order.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_DataDiri.resx">
       <DependentUpon>Form_DataDiri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Order.resx">
+      <DependentUpon>Form_Order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
