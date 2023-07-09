@@ -33,6 +33,8 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.masukanDataDiriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inputDataKaryawanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inputMotorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,9 @@
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.masukanDataDiriToolStripMenuItem,
-            this.orderToolStripMenuItem});
+            this.orderToolStripMenuItem,
+            this.inputDataKaryawanToolStripMenuItem,
+            this.inputMotorToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -62,14 +66,26 @@
             // masukanDataDiriToolStripMenuItem
             // 
             this.masukanDataDiriToolStripMenuItem.Name = "masukanDataDiriToolStripMenuItem";
-            this.masukanDataDiriToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.masukanDataDiriToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.masukanDataDiriToolStripMenuItem.Text = "Masukan Data Diri";
             // 
             // orderToolStripMenuItem
             // 
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
-            this.orderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.orderToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.orderToolStripMenuItem.Text = "Order";
+            // 
+            // inputDataKaryawanToolStripMenuItem
+            // 
+            this.inputDataKaryawanToolStripMenuItem.Name = "inputDataKaryawanToolStripMenuItem";
+            this.inputDataKaryawanToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.inputDataKaryawanToolStripMenuItem.Text = "Input Data Karyawan";
+            // 
+            // inputMotorToolStripMenuItem
+            // 
+            this.inputMotorToolStripMenuItem.Name = "inputMotorToolStripMenuItem";
+            this.inputMotorToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.inputMotorToolStripMenuItem.Text = "Input Motor";
             // 
             // Form1
             // 
@@ -92,6 +108,8 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem masukanDataDiriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inputDataKaryawanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inputMotorToolStripMenuItem;
     }
 }
 
