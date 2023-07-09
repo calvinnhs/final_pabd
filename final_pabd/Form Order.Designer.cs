@@ -57,9 +57,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(30, 340);
+            this.groupBox1.Location = new System.Drawing.Point(30, 357);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(378, 161);
+            this.groupBox1.Size = new System.Drawing.Size(429, 161);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lama Sewa";
@@ -110,7 +110,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(30, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(769, 322);
+            this.groupBox2.Size = new System.Drawing.Size(772, 333);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Motor";
@@ -195,7 +195,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(503, 409);
+            this.button1.Location = new System.Drawing.Point(503, 424);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 33);
             this.button1.TabIndex = 9;
@@ -204,7 +204,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(503, 358);
+            this.button2.Location = new System.Drawing.Point(503, 366);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 32);
             this.button2.TabIndex = 10;
@@ -213,7 +213,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(503, 461);
+            this.button3.Location = new System.Drawing.Point(503, 481);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(80, 31);
             this.button3.TabIndex = 11;
@@ -224,7 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 513);
+            this.ClientSize = new System.Drawing.Size(867, 530);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
