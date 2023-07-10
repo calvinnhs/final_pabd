@@ -28,46 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNama = new System.Windows.Forms.TextBox();
+            this.txtNotelp = new System.Windows.Forms.TextBox();
+            this.txtNoktp = new System.Windows.Forms.TextBox();
+            this.txtplgn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.txtAlamat = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNama
             // 
-            this.textBox1.Location = new System.Drawing.Point(190, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(324, 22);
-            this.textBox1.TabIndex = 0;
+            this.txtNama.Location = new System.Drawing.Point(190, 69);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.Size = new System.Drawing.Size(324, 22);
+            this.txtNama.TabIndex = 0;
             // 
-            // textBox2
+            // txtNotelp
             // 
-            this.textBox2.Location = new System.Drawing.Point(190, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(324, 22);
-            this.textBox2.TabIndex = 1;
+            this.txtNotelp.Location = new System.Drawing.Point(190, 123);
+            this.txtNotelp.Name = "txtNotelp";
+            this.txtNotelp.Size = new System.Drawing.Size(324, 22);
+            this.txtNotelp.TabIndex = 1;
             // 
-            // textBox3
+            // txtNoktp
             // 
-            this.textBox3.Location = new System.Drawing.Point(190, 181);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(324, 22);
-            this.textBox3.TabIndex = 2;
+            this.txtNoktp.Location = new System.Drawing.Point(190, 181);
+            this.txtNoktp.Name = "txtNoktp";
+            this.txtNoktp.Size = new System.Drawing.Size(324, 22);
+            this.txtNoktp.TabIndex = 2;
             // 
-            // textBox4
+            // txtplgn
             // 
-            this.textBox4.Location = new System.Drawing.Point(190, 239);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(324, 22);
-            this.textBox4.TabIndex = 3;
+            this.txtplgn.Location = new System.Drawing.Point(190, 239);
+            this.txtplgn.Name = "txtplgn";
+            this.txtplgn.Size = new System.Drawing.Size(324, 22);
+            this.txtplgn.TabIndex = 3;
             // 
             // label1
             // 
@@ -99,55 +102,87 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(113, 245);
+            this.label4.Location = new System.Drawing.Point(80, 242);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 16);
+            this.label4.Size = new System.Drawing.Size(87, 16);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Alamat";
+            this.label4.Text = "Id Pelanggan";
             // 
-            // button1
+            // btnInsert
             // 
-            this.button1.Location = new System.Drawing.Point(199, 325);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "INSERT";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnInsert.Location = new System.Drawing.Point(639, 75);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(75, 23);
+            this.btnInsert.TabIndex = 8;
+            this.btnInsert.Text = "INSERT";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // button2
+            // btnUpdate
             // 
-            this.button2.Location = new System.Drawing.Point(319, 325);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "UPDATE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(639, 146);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(82, 23);
+            this.btnUpdate.TabIndex = 9;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // button3
+            // btnDelete
             // 
-            this.button3.Location = new System.Drawing.Point(439, 325);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "DELETE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(639, 215);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(86, 23);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtAlamat
+            // 
+            this.txtAlamat.Location = new System.Drawing.Point(190, 293);
+            this.txtAlamat.Multiline = true;
+            this.txtAlamat.Name = "txtAlamat";
+            this.txtAlamat.Size = new System.Drawing.Size(324, 82);
+            this.txtAlamat.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(108, 299);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Alamat";
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(32, 398);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 13;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // Form_DataDiri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtAlamat);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtplgn);
+            this.Controls.Add(this.txtNoktp);
+            this.Controls.Add(this.txtNotelp);
+            this.Controls.Add(this.txtNama);
             this.Name = "Form_DataDiri";
             this.Text = "Form_DataDiri";
             this.ResumeLayout(false);
@@ -157,16 +192,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNama;
+        private System.Windows.Forms.TextBox txtNotelp;
+        private System.Windows.Forms.TextBox txtNoktp;
+        private System.Windows.Forms.TextBox txtplgn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtAlamat;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBack;
     }
 }

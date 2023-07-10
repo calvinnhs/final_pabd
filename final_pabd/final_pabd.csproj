@@ -48,29 +48,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form Order.cs">
+    <Compile Include="Form_order.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form Order.Designer.cs">
-      <DependentUpon>Form Order.cs</DependentUpon>
+    <Compile Include="Form_order.Designer.cs">
+      <DependentUpon>Form_order.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Form_menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Form_menu.Designer.cs">
+      <DependentUpon>Form_menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Form_motor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Form_motor.Designer.cs">
+      <DependentUpon>Form_motor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="Form_karyawan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="Form_karyawan.Designer.cs">
+      <DependentUpon>Form_karyawan.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_DataDiri.cs">
       <SubType>Form</SubType>
@@ -80,17 +80,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form Order.resx">
-      <DependentUpon>Form Order.cs</DependentUpon>
+    <EmbeddedResource Include="Form_order.resx">
+      <DependentUpon>Form_order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Form_menu.resx">
+      <DependentUpon>Form_menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Form_motor.resx">
+      <DependentUpon>Form_motor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="Form_karyawan.resx">
+      <DependentUpon>Form_karyawan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_DataDiri.resx">
       <DependentUpon>Form_DataDiri.cs</DependentUpon>

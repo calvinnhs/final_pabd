@@ -29,23 +29,24 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpAkhir = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpAwal = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAlamat = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbxJumlahmotor = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxJenisMotor = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,9 +54,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.dtpAkhir);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtpAwal);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 357);
             this.groupBox1.Name = "groupBox1";
@@ -65,12 +66,12 @@
             this.groupBox1.Text = "Lama Sewa";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // dateTimePicker2
+            // dtpAkhir
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(51, 119);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 3;
+            this.dtpAkhir.Location = new System.Drawing.Point(51, 119);
+            this.dtpAkhir.Name = "dtpAkhir";
+            this.dtpAkhir.Size = new System.Drawing.Size(200, 22);
+            this.dtpAkhir.TabIndex = 3;
             // 
             // label2
             // 
@@ -81,12 +82,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Akhir Sewa";
             // 
-            // dateTimePicker1
+            // dtpAwal
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(51, 53);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpAwal.Location = new System.Drawing.Point(51, 53);
+            this.dtpAwal.Name = "dtpAwal";
+            this.dtpAwal.Size = new System.Drawing.Size(200, 22);
+            this.dtpAwal.TabIndex = 1;
             // 
             // label1
             // 
@@ -99,14 +100,14 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtAlamat);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.cbxJumlahmotor);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cbxJenisMotor);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(30, 12);
             this.groupBox2.Name = "groupBox2";
@@ -115,13 +116,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Motor";
             // 
-            // textBox1
+            // txtAlamat
             // 
-            this.textBox1.Location = new System.Drawing.Point(51, 229);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 87);
-            this.textBox1.TabIndex = 8;
+            this.txtAlamat.Location = new System.Drawing.Point(51, 229);
+            this.txtAlamat.Multiline = true;
+            this.txtAlamat.Name = "txtAlamat";
+            this.txtAlamat.Size = new System.Drawing.Size(224, 87);
+            this.txtAlamat.TabIndex = 8;
             // 
             // label7
             // 
@@ -140,13 +141,13 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBox2
+            // cbxJumlahmotor
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(51, 170);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(157, 24);
-            this.comboBox2.TabIndex = 5;
+            this.cbxJumlahmotor.FormattingEnabled = true;
+            this.cbxJumlahmotor.Location = new System.Drawing.Point(51, 170);
+            this.cbxJumlahmotor.Name = "cbxJumlahmotor";
+            this.cbxJumlahmotor.Size = new System.Drawing.Size(157, 24);
+            this.cbxJumlahmotor.TabIndex = 5;
             // 
             // label6
             // 
@@ -175,13 +176,13 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Warna :";
             // 
-            // comboBox1
+            // cbxJenisMotor
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(51, 71);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(157, 24);
-            this.comboBox1.TabIndex = 1;
+            this.cbxJenisMotor.FormattingEnabled = true;
+            this.cbxJenisMotor.Location = new System.Drawing.Point(51, 71);
+            this.cbxJenisMotor.Name = "cbxJenisMotor";
+            this.cbxJenisMotor.Size = new System.Drawing.Size(157, 24);
+            this.cbxJenisMotor.TabIndex = 1;
             // 
             // label3
             // 
@@ -193,41 +194,51 @@
             this.label3.Text = "Jenis Motor";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // button1
+            // btnUpdate
             // 
-            this.button1.Location = new System.Drawing.Point(503, 424);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "UPDATE";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(503, 424);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(80, 33);
+            this.btnUpdate.TabIndex = 9;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnInsert
             // 
-            this.button2.Location = new System.Drawing.Point(618, 424);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 32);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "INSERT";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnInsert.Location = new System.Drawing.Point(618, 424);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(80, 32);
+            this.btnInsert.TabIndex = 10;
+            this.btnInsert.Text = "INSERT";
+            this.btnInsert.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDelete
             // 
-            this.button3.Location = new System.Drawing.Point(731, 424);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 31);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "DELETE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(731, 424);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(80, 31);
+            this.btnDelete.TabIndex = 11;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(618, 495);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.TabIndex = 12;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // Form_Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 530);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_Order";
@@ -244,22 +255,23 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpAkhir;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpAwal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAlamat;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbxJumlahmotor;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cbxJenisMotor;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnBack;
     }
 }
