@@ -62,7 +62,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(31, 486);
+            this.btnBack.Location = new System.Drawing.Point(850, 486);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 12;
@@ -84,7 +84,7 @@
             // 
             this.txtIdorder.Location = new System.Drawing.Point(235, 120);
             this.txtIdorder.Name = "txtIdorder";
-            this.txtIdorder.Size = new System.Drawing.Size(263, 22);
+            this.txtIdorder.Size = new System.Drawing.Size(248, 22);
             this.txtIdorder.TabIndex = 15;
             // 
             // txtJumlahmotor
@@ -100,6 +100,7 @@
             this.txtplatnomor.Name = "txtplatnomor";
             this.txtplatnomor.Size = new System.Drawing.Size(263, 22);
             this.txtplatnomor.TabIndex = 17;
+            this.txtplatnomor.TextChanged += new System.EventHandler(this.txtplatnomor_TextChanged);
             // 
             // txtJenismotor
             // 
@@ -223,7 +224,7 @@
             // 
             this.txtIdPelanggan.Location = new System.Drawing.Point(662, 120);
             this.txtIdPelanggan.Name = "txtIdPelanggan";
-            this.txtIdPelanggan.Size = new System.Drawing.Size(263, 22);
+            this.txtIdPelanggan.Size = new System.Drawing.Size(190, 22);
             this.txtIdPelanggan.TabIndex = 25;
             // 
             // label7
@@ -250,7 +251,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1060, 530);
+            this.ClientSize = new System.Drawing.Size(951, 530);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);

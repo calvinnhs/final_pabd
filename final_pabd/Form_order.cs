@@ -17,7 +17,12 @@ namespace final_pabd
         private string stringConnection = "data source =DESKTOP-BI70IVU;" +
            "database=sewamotor;user ID=sa; password=sayangmei";
         private SqlConnection koneksi;
-        private string Nama, Notelp, Noid, Noktp;
+        private string id_transaksi, jml_motor, no_pol, jenis_motor, id_pelanggan, id_motor, lama_sewa;
+
+        private void txtplatnomor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         public Form_Order()
         {
@@ -43,19 +48,26 @@ namespace final_pabd
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            Nama = txtNama.Text;
-            Notelp = txtNotelp.Text;
-            Noktp = txtNoktp.Text;
-            Noid = txtNoid.Text;
+            id_transaksi = txtIdorder.Text;
+            jml_motor = txtJumlahmotor.Text;
+            no_pol = txtplatnomor.Text;
+            jenis_motor = txtJenismotor.Text;
+            id_pelanggan = txtIdPelanggan.Text;
+             
+            lama_sewa = txtLamasewa.Text;
 
             koneksi.Open();
-            string str = "insert into dbo.karyawan (nama_karyawan, no_telp, no_ktp , no_id)" + "values(@nama_karyawan, @no_telp, @no_ktp , @no_id)";
+            string str = "insert into dbo.transaksi (id_transaksi, jml_motor, no_pol, jenis_motor, id_pelanggan, id_motor, lama_sewa)" +
+                "values(@id_transaksi, @jml_motor, @no_pol, @jenis_motor, @id_pelanggan, @id_motor, @lama_sewa)";
             SqlCommand cmd = new SqlCommand(str, koneksi);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SqlParameter("nama_karyawan", Nama));
-            cmd.Parameters.Add(new SqlParameter("no_telp", Notelp));
-            cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
-            cmd.Parameters.Add(new SqlParameter("no_id", Noid));
+            cmd.Parameters.Add(new SqlParameter("id_transaksi", id_transaksi));
+            cmd.Parameters.Add(new SqlParameter("jml_motor", jml_motor));
+            cmd.Parameters.Add(new SqlParameter("no_pol", no_pol));
+            cmd.Parameters.Add(new SqlParameter("jenis_motor", jenis_motor));
+            cmd.Parameters.Add(new SqlParameter("id_pelanggan", id_pelanggan));
+            cmd.Parameters.Add(new SqlParameter("id_motor", id_motor));
+            cmd.Parameters.Add(new SqlParameter("lama_sewa", lama_sewa));
 
             cmd.ExecuteNonQuery();
             koneksi.Close();

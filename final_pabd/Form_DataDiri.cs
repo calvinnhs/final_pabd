@@ -21,6 +21,35 @@ namespace final_pabd
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
+            string upd = "UPDATE pelanggan SET id_pelanggan = @id_pelanggan, nama_plgn = @nama_plgn, no_hp = @no_hp, no_ktp = @no_ktp, alamat= @alamat where id_pelanggan = @id_pelanggan";
+
+            using (SqlConnection conn = new SqlConnection(stringConnection))
+            {
+                using (SqlCommand cmd = new SqlCommand(upd, conn))
+                {
+                    cmd.Parameters.AddWithValue("id_pelanggan", txtplgn.Text);
+                    cmd.Parameters.AddWithValue("nama_plgn", txtNama.Text);
+                    cmd.Parameters.AddWithValue("no_hp", txtNotelp.Text);
+                    cmd.Parameters.AddWithValue("no_ktp", txtNoktp.Text);
+                    cmd.Parameters.AddWithValue("alamat", txtAlamat.Text);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil di Updated");
+                        datagridview();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occured: " + ex.Message + " (Error Code: " + ex.Number + ")");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occured: " + ex.Message);
+                    }
+                }
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)

@@ -16,8 +16,9 @@ namespace final_pabd
 {
     public partial class Form_motor : Form
     {
-        string connectionString = "data source = DESKTOP-BI70IVU;database=sewamotor;MultipleActiveResultSets=True;User ID = sa; Password = sayangmei";
-        private string nama, warna, nopol, idmotor;
+        string connectionString = "data source = DESKTOP-BI70IVU;database=sewamotor;" +
+            "MultipleActiveResultSets=True;User ID = sa; Password = sayangmei";
+        private string nama, warna, nopol, idmotor; 
         private SqlConnection koneksi;
         private DateTime waktu;
 
@@ -44,7 +45,7 @@ namespace final_pabd
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            string upd = "UPDATE motor SET id_motor = @id_motor, jenis_motor = @jenis_motor";
+            string upd = "UPDATE motor SET id_motor = @id_motor, jenis_motor = @jenis_motor where id_motor = @id_motor";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

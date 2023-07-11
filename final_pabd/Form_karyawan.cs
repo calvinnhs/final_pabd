@@ -115,7 +115,71 @@ namespace final_pabd
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Pilih baris data yang akan diperbarui", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            string id = dataGridView1.SelectedRows[0].Cells["no_id"].Value.ToString();
+            string nmkrywn = txtNama.Text;
+            string noktp = txtNoktp.Text;
+            string notelp = txtNotelp.Text;
+
+            if (id == "")
+            {
+                MessageBox.Show("ID Suplier tidak valid", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (nmkrywn == "")
+            {
+                MessageBox.Show("Masukkan Nama karyawan", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (notelp == "")
+            {
+                MessageBox.Show("Masukkan No Telepon", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (noktp == "")
+            {
+                MessageBox.Show("Masukkan no ktp", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string sql = "UPDATE karyawan SET nama_karyawan = " +
+                "@nama_karyawan, no_id = @no_id, no_telp = @no_telp, no_ktp = @no_ktp WHERE no_id = @no_id";
+            using (SqlCommand command = new SqlCommand(sql, koneksi))
+            {
+                command.Parameters.AddWithValue("@no_id", id);
+                command.Parameters.AddWithValue("@nama_karyawan", nmkrywn);
+                command.Parameters.AddWithValue("@no_ktp", noktp);
+                command.Parameters.AddWithValue("@no_telp", notelp);
+
+
+                try
+                {
+                    koneksi.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Data berhasil diperbarui", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        koneksi.Close();
+                        refreshform();
+                        DataGridView();
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data tidak ditemukan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                 
+            }
         }
 
         private void DataGridView()

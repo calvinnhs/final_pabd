@@ -51,45 +51,55 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.RosyBrown;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Location = new System.Drawing.Point(700, 127);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 16);
+            this.label1.Size = new System.Drawing.Size(78, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Jenis Motor";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.RosyBrown;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Location = new System.Drawing.Point(701, 166);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.Size = new System.Drawing.Size(49, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Warna";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.RosyBrown;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Location = new System.Drawing.Point(701, 213);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.Size = new System.Drawing.Size(50, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "No Pol";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.RosyBrown;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Location = new System.Drawing.Point(701, 256);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 16);
+            this.label4.Size = new System.Drawing.Size(77, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "Tahun Buat";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.RosyBrown;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label5.Location = new System.Drawing.Point(701, 296);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 16);
+            this.label5.Size = new System.Drawing.Size(59, 18);
             this.label5.TabIndex = 6;
             this.label5.Text = "ID Motor";
             // 
@@ -123,7 +133,7 @@
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(226, 383);
+            this.btnInsert.Location = new System.Drawing.Point(265, 384);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(88, 32);
             this.btnInsert.TabIndex = 11;
@@ -133,7 +143,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(525, 383);
+            this.btnDelete.Location = new System.Drawing.Point(458, 384);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 32);
             this.btnDelete.TabIndex = 12;
@@ -143,7 +153,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(367, 383);
+            this.btnUpdate.Location = new System.Drawing.Point(359, 384);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(93, 32);
             this.btnUpdate.TabIndex = 13;
@@ -153,7 +163,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(943, 452);
+            this.btnBack.Location = new System.Drawing.Point(941, 441);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 16;
@@ -174,7 +184,7 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(74, 383);
+            this.btnRead.Location = new System.Drawing.Point(171, 384);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(88, 32);
             this.btnRead.TabIndex = 18;
@@ -186,7 +196,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(458, 22);
+            this.label6.Location = new System.Drawing.Point(429, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(229, 31);
             this.label6.TabIndex = 20;
@@ -203,6 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1046, 487);
             this.Controls.Add(this.cbxJenismotor);
             this.Controls.Add(this.label6);
