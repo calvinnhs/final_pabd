@@ -23,6 +23,42 @@ namespace final_pabd
 
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_DataDiri_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void datagridview()
+        {
+            koneksi.Open();
+            string str = "select * from dbo.pelanggan";
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            koneksi.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridview();
+            btnRead.Enabled = true;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new Form_menu().Show();
+        }
+
         public Form_DataDiri()
         {
             InitializeComponent();
@@ -74,7 +110,30 @@ namespace final_pabd
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            refreshform();
+            string dlt = "DELETE FROM pelanggan WHERE Id_pelanggan = @Id_pelanggan";
+            using (SqlConnection conn = new SqlConnection(stringConnection))
+            {
+                using (SqlCommand cmd = new SqlCommand(dlt, conn))
+                {
+                    cmd.Parameters.AddWithValue("Id_pelanggan", txtplgn.Text);
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil Dihapus");
+                        datagridview();
+
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An Error Occurred: " + ex.Message + ("Error Code: " + ex.Number));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An Error occurred: " + ex.Message);
+                    }
+                }
+            }
         }
 
 

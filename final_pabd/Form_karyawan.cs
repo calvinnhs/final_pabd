@@ -28,7 +28,30 @@ namespace final_pabd
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            refreshform();
+            string dlt = "DELETE FROM karyawan WHERE no_id = @no_id";
+            using (SqlConnection conn = new SqlConnection(stringConnection))
+            {
+                using (SqlCommand cmd = new SqlCommand(dlt, conn))
+                {
+                    cmd.Parameters.AddWithValue("no_id", txtNoid.Text);
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil Dihapus");
+                        DataGridView();
+
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An Error Occurred: " + ex.Message + ("Error Code: " + ex.Number));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An Error occurred: " + ex.Message);
+                    }
+                }
+            }
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -60,6 +83,11 @@ namespace final_pabd
             new Form_menu().Show();
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void refreshform()
         {
             txtNama.Text = "";
@@ -73,6 +101,13 @@ namespace final_pabd
             btnInsert.Enabled = true;
             btnDelete.Enabled = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataGridView();
+            btnRead.Enabled = false;
+        }
+
         private void Form3_Load(object sender, EventArgs e)
         {
 
@@ -81,6 +116,17 @@ namespace final_pabd
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DataGridView()
+        {
+            koneksi.Open();
+            string str = "select * from dbo.karyawan";
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            koneksi.Close();
         }
     }
 }

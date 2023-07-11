@@ -16,10 +16,7 @@ namespace final_pabd
 {
     public partial class Form_motor : Form
     {
-        Image curimage;
-        string curFileName;
         string connectionString = "data source = DESKTOP-BI70IVU;database=sewamotor;MultipleActiveResultSets=True;User ID = sa; Password = sayangmei";
-        string savedImageName = "";
         private string nama, warna, nopol, idmotor;
         private SqlConnection koneksi;
         private DateTime waktu;
@@ -32,90 +29,81 @@ namespace final_pabd
         }
         private void refreshform()
         {
-            txtJenismotor.Text = "";
+            cbxJenismotor.Text = "";
             txtWarna.Text = "";
             txtNopol.Text = "";
             dateTahun.Enabled = false;
             txtIdmotor.Text = "";
-            txtJenismotor.Enabled = true;
+            cbxJenismotor.Enabled = true;
             txtWarna.Enabled = true;
             txtNopol.Enabled = true;
             txtIdmotor.Enabled = true;
             btnInsert.Enabled = true;
             btnDelete.Enabled = true;
+            dateTahun.Enabled = true;
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            string upd = "UPDATE motor SET id_motor = @id_motor, jenis_motor = @jenis_motor";
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(upd, conn))
+                {
+                    cmd.Parameters.AddWithValue("id_motor", txtIdmotor.Text);
+                    cmd.Parameters.AddWithValue("jenis_motor", cbxJenismotor.Text);
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil di Updated");
+                        datagridview();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occured: " + ex.Message + " (Error Code: " + ex.Number + ")");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occured: " + ex.Message);
+                    }
+                }
+            }
         }
 
         private void Bw_Click(object sender, EventArgs e)
         {
 
-            OpenFileDialog openDLg = new OpenFileDialog();
-            if (openDLg.ShowDialog() == DialogResult.OK)
-            {
-                curFileName = openDLg.FileName;
-                txtFile.Text = curFileName;
-            }
+            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridview();
+            btnRead.Enabled = true;
         }
 
         private void DP_Click(object sender, EventArgs e)
         {
-            if (txtFile.Text != "")
-            {
-                string sql = "SELECT Gambar FROM motor WHERE id_motor='1'";
-                SqlConnection connection = new SqlConnection(connectionString);
-                connection.ConnectionString = connectionString;
-                connection.Open();
+            
+        }
 
-                FileStream file;
-                BinaryWriter bw;
-
-                int bufferSize = 100;
-                byte[] outbyte = new byte[bufferSize];
-                long retval;
-                long startIndex = 0;
-
-                savedImageName = txtFile.Text;
-
-                SqlCommand command = new SqlCommand(sql, connection);
-                SqlDataReader myReader = command.ExecuteReader(CommandBehavior.SequentialAccess);
-
-                while (myReader.Read())
-                {
-                    file = new FileStream(savedImageName, FileMode.OpenOrCreate, FileAccess.Write);
-                    bw = new BinaryWriter(file);
-                    startIndex = 0;
-                    retval = myReader.GetBytes(0, startIndex, outbyte, 0, bufferSize);
-                    while (retval == bufferSize)
-                    {
-                        bw.Write(outbyte);
-                        bw.Flush();
-                        startIndex += bufferSize;
-                        retval = myReader.GetBytes(0, startIndex, outbyte, 0, bufferSize);
-                    }
-                    bw.Write(outbyte, 0, (int)retval - 1);
-                    bw.Flush();
-                    bw.Close();
-                    file.Close();
-
-                }
-                connection.Close();
-                curimage = Image.FromFile(savedImageName);
-                pictureBox1.Image = curimage;
-                pictureBox1.Invalidate();
-                connection.Close();
-
-
-            }
-            else MessageBox.Show("Upload the image first");
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            new Form_menu().Show();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
             
-            nama = txtJenismotor.Text;
+            nama = cbxJenismotor.Text;
             warna = txtWarna.Text;
             nopol = txtNopol.Text;
             waktu = dateTahun.Value;
@@ -142,7 +130,41 @@ namespace final_pabd
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            refreshform();
+            string dlt = "DELETE FROM motor WHERE id_motor = @id_motor";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(dlt, conn)) 
+                {
+                    cmd.Parameters.AddWithValue("id_motor", txtIdmotor.Text);
+                    try 
+                    {
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil Dihapus");
+                        datagridview();
+
+                    }
+                    catch (SqlException ex) 
+                    {
+                        MessageBox.Show("An Error Occurred: " + ex.Message +  ("Error Code: " + ex.Number ));
+                    }
+                    catch (Exception ex) 
+                    {
+                        MessageBox.Show("An Error occurred: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void datagridview()
+        {
+            koneksi.Open();
+            string str = "select * from dbo.motor";
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            koneksi.Close();
         }
     }
 }
