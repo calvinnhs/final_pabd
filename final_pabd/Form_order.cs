@@ -53,7 +53,6 @@ namespace final_pabd
             no_pol = txtplatnomor.Text;
             jenis_motor = txtJenismotor.Text;
             id_pelanggan = txtIdPelanggan.Text;
-             
             lama_sewa = txtLamasewa.Text;
 
             koneksi.Open();
