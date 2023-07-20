@@ -14,10 +14,10 @@ namespace final_pabd
 
     public partial class Form_karyawan : Form
     {
-        private string stringConnection = "data source =DESKTOP-BI70IVU;" +
-           "database=sewamotor;user ID=sa; password=sayangmei";
+        private string stringConnection = "data source =LAPTOP-1JRJB77C\\HMMPRYT;" +
+            "database=sewamotor;user ID=sa; password=123";
         private SqlConnection koneksi;
-        private string Nama, Notelp, Noid, Noktp;
+        private string Nama, Notelp, Noid, Noktp ;
 
         public Form_karyawan()
         {
@@ -69,6 +69,7 @@ namespace final_pabd
             cmd.Parameters.Add(new SqlParameter("no_telp", Notelp));
             cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
             cmd.Parameters.Add(new SqlParameter("no_id", Noid));
+        
 
             cmd.ExecuteNonQuery();
             koneksi.Close();
@@ -80,7 +81,9 @@ namespace final_pabd
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new Form_menu().Show();
+            Form_menu fm = new Form_menu();
+            fm.Show();
+            this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)

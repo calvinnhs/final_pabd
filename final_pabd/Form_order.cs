@@ -14,12 +14,22 @@ namespace final_pabd
 {
     public partial class Form_Order : Form
     {
-        private string stringConnection = "data source =DESKTOP-BI70IVU;" +
-           "database=sewamotor;user ID=sa; password=sayangmei";
+        private string stringConnection = "data source =LAPTOP-1JRJB77C\\HMMPRYT;" +
+            "database=sewamotor;user ID=sa; password=123";
         private SqlConnection koneksi;
         private string id_transaksi, jml_motor, no_pol, jenis_motor, id_pelanggan, id_motor, lama_sewa;
 
         private void txtplatnomor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_Order_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIdorder_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -43,7 +53,9 @@ namespace final_pabd
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new Form_menu().Show();
+            Form_menu fm = new Form_menu();
+            fm.Show();
+            this.Close();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -52,8 +64,9 @@ namespace final_pabd
             jml_motor = txtJumlahmotor.Text;
             no_pol = txtplatnomor.Text;
             jenis_motor = txtJenismotor.Text;
-            id_pelanggan = txtIdPelanggan.Text;
-            lama_sewa = txtLamasewa.Text;
+            id_pelanggan = cbxPelanggan.Text;
+            id_motor = cbxMotor.Text;
+            lama_sewa = dtpicker.Text;
 
             koneksi.Open();
             string str = "insert into dbo.transaksi (id_transaksi, jml_motor, no_pol, jenis_motor, id_pelanggan, id_motor, lama_sewa)" +
@@ -75,6 +88,35 @@ namespace final_pabd
 
             refreshfrom();
         }
+        private void cbid_pelanggan()
+        {
+            koneksi.Open();
+            string str = "select id_pelanggan from dbo.pelanggan";
+            SqlCommand cmd = new SqlCommand(str, koneksi);
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            cmd.ExecuteReader();
+            koneksi.Close();
+            cbxPelanggan.DisplayMember = "id_pelanggan";
+            cbxPelanggan.ValueMember = "id_pelanggan";
+            cbxPelanggan.DataSource = ds.Tables[0];
+        }
+        private void cbid_motor()
+        {
+            koneksi.Open();
+            string str = "select id_motor from dbo.motor";
+            SqlCommand cmd = new SqlCommand(str, koneksi);
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            cmd.ExecuteReader();
+            koneksi.Close();
+            cbxMotor.DisplayMember = "id_motor";
+            cbxMotor.ValueMember = "id_motor";
+            cbxMotor.DataSource = ds.Tables[0];
+        }
+
 
         private void refreshfrom()
         {
@@ -83,19 +125,19 @@ namespace final_pabd
             txtplatnomor.Text = "";
             txtJenismotor.Text = "";
             txtAlamat.Text = "";
-            txtIdPelanggan.Text = "";
-            txtIdmotor.Text = "";
-            txtLamasewa.Text = "";
+            cbxPelanggan.Enabled = true;
+            cbxMotor.Enabled = true;
             txtIdorder.Enabled = true;
             txtJumlahmotor.Enabled = true;
             txtplatnomor.Enabled = true;
             txtJenismotor.Enabled = true;
             txtAlamat.Enabled = true;
-            txtIdPelanggan.Enabled = true;
-            txtIdmotor.Enabled = true;
-            txtLamasewa.Enabled = true;
+            cbxPelanggan.SelectedIndex = -1;
+            cbxMotor.SelectedIndex = -1;
+            dtpicker.Enabled = true;
             btnInsert.Enabled = true;
-           
+            cbid_pelanggan();
+            cbid_motor();
         }
     }
 }

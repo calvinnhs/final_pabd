@@ -36,7 +36,6 @@
             this.txtWarna = new System.Windows.Forms.TextBox();
             this.txtNopol = new System.Windows.Forms.TextBox();
             this.dateTahun = new System.Windows.Forms.DateTimePicker();
-            this.txtIdmotor = new System.Windows.Forms.TextBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.btnRead = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cbxJenismotor = new System.Windows.Forms.TextBox();
+            this.txtidMotor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,13 +124,6 @@
             this.dateTahun.Size = new System.Drawing.Size(205, 22);
             this.dateTahun.TabIndex = 9;
             // 
-            // txtIdmotor
-            // 
-            this.txtIdmotor.Location = new System.Drawing.Point(793, 296);
-            this.txtIdmotor.Name = "txtIdmotor";
-            this.txtIdmotor.Size = new System.Drawing.Size(205, 22);
-            this.txtIdmotor.TabIndex = 10;
-            // 
             // btnInsert
             // 
             this.btnInsert.Location = new System.Drawing.Point(265, 384);
@@ -209,12 +202,20 @@
             this.cbxJenismotor.Size = new System.Drawing.Size(205, 22);
             this.cbxJenismotor.TabIndex = 21;
             // 
+            // txtidMotor
+            // 
+            this.txtidMotor.Location = new System.Drawing.Point(793, 296);
+            this.txtidMotor.Name = "txtidMotor";
+            this.txtidMotor.Size = new System.Drawing.Size(100, 22);
+            this.txtidMotor.TabIndex = 22;
+            // 
             // Form_motor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1046, 487);
+            this.Controls.Add(this.txtidMotor);
             this.Controls.Add(this.cbxJenismotor);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnRead);
@@ -223,7 +224,6 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.txtIdmotor);
             this.Controls.Add(this.dateTahun);
             this.Controls.Add(this.txtNopol);
             this.Controls.Add(this.txtWarna);
@@ -234,6 +234,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form_motor";
             this.Text = "Add Motor";
+            this.Load += new System.EventHandler(this.Form_motor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -249,7 +250,6 @@
         private System.Windows.Forms.TextBox txtWarna;
         private System.Windows.Forms.TextBox txtNopol;
         private System.Windows.Forms.DateTimePicker dateTahun;
-        private System.Windows.Forms.TextBox txtIdmotor;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
@@ -258,5 +258,6 @@
         private System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox cbxJenismotor;
+        private System.Windows.Forms.TextBox txtidMotor;
     }
 }

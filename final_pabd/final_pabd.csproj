@@ -78,6 +78,12 @@
     <Compile Include="Form_DataDiri.Designer.cs">
       <DependentUpon>Form_DataDiri.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gudang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gudang.Designer.cs">
+      <DependentUpon>Gudang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_order.resx">
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_DataDiri.resx">
       <DependentUpon>Form_DataDiri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gudang.resx">
+      <DependentUpon>Gudang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -120,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DSC07428.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,10 +13,10 @@ namespace final_pabd
 {
     public partial class Form_DataDiri : Form
     {
-        private string stringConnection = "data source =DESKTOP-BI70IVU;" +
-            "database=sewamotor;user ID=sa; password=sayangmei";
+        private string stringConnection = "data source =LAPTOP-1JRJB77C\\HMMPRYT;" +
+            "database=sewamotor;user ID=sa; password=123";
         private SqlConnection koneksi;
-        private string Nama, Notelp, Noktp, Idpelanggan, Alamat;
+        private string Nama, Notelp, Noktp, Idpelanggan, Alamat, karyawan;
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace final_pabd
                     cmd.Parameters.AddWithValue("no_hp", txtNotelp.Text);
                     cmd.Parameters.AddWithValue("no_ktp", txtNoktp.Text);
                     cmd.Parameters.AddWithValue("alamat", txtAlamat.Text);
-
+                    
                     try
                     {
                         conn.Open();
@@ -85,7 +85,14 @@ namespace final_pabd
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new Form_menu().Show();
+            Form_menu fm = new Form_menu();
+            fm.Show();
+            this.Close();
+        }
+
+        private void cbxNama_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         public Form_DataDiri()
@@ -109,6 +116,22 @@ namespace final_pabd
             txtAlamat.Enabled = true;
             btnInsert.Enabled = true;
             btnDelete.Enabled = true;
+            cbid_karyawan();
+        }
+
+        private void cbid_karyawan()
+        {
+            koneksi.Open();
+            string str = "select no_id from dbo.karyawan";
+            SqlCommand cmd = new SqlCommand(str, koneksi);
+            SqlDataAdapter da = new SqlDataAdapter(str, koneksi);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            cmd.ExecuteReader();
+            koneksi.Close();
+            cbxNama.DisplayMember = "no_id";
+            cbxNama.ValueMember = "no_id";
+            cbxNama.DataSource = ds.Tables[0];
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -118,9 +141,10 @@ namespace final_pabd
             Noktp = txtNoktp.Text;
             Idpelanggan = txtplgn.Text;
             Alamat = txtAlamat.Text;
+            karyawan = cbxNama.Text;
 
             koneksi.Open();
-            string str = "insert into dbo.pelanggan (nama_plgn, no_hp, no_ktp , Id_pelanggan, alamat)" + "values(@nama_plgn, @no_hp, @no_ktp , @Id_pelanggan, @alamat)";
+            string str = "insert into dbo.pelanggan (nama_plgn, no_hp, no_ktp , Id_pelanggan, alamat, no_id)" + "values(@nama_plgn, @no_hp, @no_ktp , @Id_pelanggan, @alamat, @no_id)";
             SqlCommand cmd = new SqlCommand(str, koneksi);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add(new SqlParameter("nama_plgn", Nama));
@@ -128,7 +152,8 @@ namespace final_pabd
             cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
             cmd.Parameters.Add(new SqlParameter("Id_pelanggan", Idpelanggan));
             cmd.Parameters.Add(new SqlParameter("alamat", Alamat));
-     
+            cmd.Parameters.Add(new SqlParameter("no_id", karyawan));
+
             cmd.ExecuteNonQuery();
             koneksi.Close();
 

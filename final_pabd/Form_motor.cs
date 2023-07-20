@@ -16,8 +16,8 @@ namespace final_pabd
 {
     public partial class Form_motor : Form
     {
-        string connectionString = "data source = DESKTOP-BI70IVU;database=sewamotor;" +
-            "MultipleActiveResultSets=True;User ID = sa; Password = sayangmei";
+        string connectionString = "data source =LAPTOP-1JRJB77C\\HMMPRYT;" +
+            "database=sewamotor;user ID=sa; password=123";
         private string nama, warna, nopol, idmotor; 
         private SqlConnection koneksi;
         private DateTime waktu;
@@ -33,12 +33,12 @@ namespace final_pabd
             cbxJenismotor.Text = "";
             txtWarna.Text = "";
             txtNopol.Text = "";
-            dateTahun.Enabled = false;
-            txtIdmotor.Text = "";
+            dateTahun.Value = DateTime.Today;
+            txtidMotor.Text = "";
             cbxJenismotor.Enabled = true;
             txtWarna.Enabled = true;
             txtNopol.Enabled = true;
-            txtIdmotor.Enabled = true;
+            txtidMotor.Enabled = true;
             btnInsert.Enabled = true;
             btnDelete.Enabled = true;
             dateTahun.Enabled = true;
@@ -51,7 +51,7 @@ namespace final_pabd
             {
                 using (SqlCommand cmd = new SqlCommand(upd, conn))
                 {
-                    cmd.Parameters.AddWithValue("id_motor", txtIdmotor.Text);
+                    cmd.Parameters.AddWithValue("id_motor", txtidMotor.Text);
                     cmd.Parameters.AddWithValue("jenis_motor", cbxJenismotor.Text);
 
                     try
@@ -98,7 +98,14 @@ namespace final_pabd
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            new Form_menu().Show();
+            Form_menu fm = new Form_menu();
+            fm.Show();
+            this.Close();
+        }
+
+        private void Form_motor_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -108,7 +115,7 @@ namespace final_pabd
             warna = txtWarna.Text;
             nopol = txtNopol.Text;
             waktu = dateTahun.Value;
-            idmotor = txtIdmotor.Text;
+            idmotor = txtidMotor.Text;
 
             koneksi.Open();
             string str = "insert into dbo.motor (id_motor, no_pol, warna, jenis_motor, tahun_buat)" + "values(@id_motor, @no_pol, @warna, @jenis_motor, @tahun_buat)";
@@ -136,7 +143,7 @@ namespace final_pabd
             {
                 using (SqlCommand cmd = new SqlCommand(dlt, conn)) 
                 {
-                    cmd.Parameters.AddWithValue("id_motor", txtIdmotor.Text);
+                    cmd.Parameters.AddWithValue("id_motor", txtidMotor.Text);
                     try 
                     {
                         conn.Open();

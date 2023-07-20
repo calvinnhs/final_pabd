@@ -26,27 +26,42 @@ namespace final_pabd
 
         private void btnDatadiri_Click(object sender, EventArgs e)
         {
-            new Form_DataDiri().Show();
+            Form_DataDiri fm = new Form_DataDiri();
+            fm.Show();
+            this.Hide();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            new Form_Order().Show();
-        }
-
-        private void btnDatamotor_Click(object sender, EventArgs e)
-        {
-            new Form_motor().Show();    
-        }
-
-        private void btnDatakaryawan_Click(object sender, EventArgs e)
-        {
-            new Form_karyawan().Show(); 
+            Form_Order fm = new Form_Order();
+            fm.Show();
+            this.Hide();
         }
 
         private void Form_menu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataKendaraanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_motor fm = new Form_motor();
+            fm.Show();
+            this.Hide();
+        }
+
+        private void dataKaryawanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_karyawan fk = new Form_karyawan();
+            fk.Show();
+            this.Hide();    
+        }
+
+        private void gudangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Gudang g = new Gudang();
+            g.Show();
+            this.Hide();
         }
     }
 }
