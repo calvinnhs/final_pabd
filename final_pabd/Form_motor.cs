@@ -45,6 +45,7 @@ namespace final_pabd
         }
         private void button3_Click(object sender, EventArgs e)
         {
+
             string upd = "UPDATE motor SET id_motor = @id_motor, jenis_motor = @jenis_motor where id_motor = @id_motor";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -110,30 +111,57 @@ namespace final_pabd
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            
+
             nama = cbxJenismotor.Text;
             warna = txtWarna.Text;
             nopol = txtNopol.Text;
             waktu = dateTahun.Value;
             idmotor = txtidMotor.Text;
 
-            koneksi.Open();
-            string str = "insert into dbo.motor (id_motor, no_pol, warna, jenis_motor, tahun_buat)" + "values(@id_motor, @no_pol, @warna, @jenis_motor, @tahun_buat)";
-            SqlCommand cmd = new SqlCommand(str, koneksi);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SqlParameter("id_motor", idmotor));
-            cmd.Parameters.Add(new SqlParameter("no_pol", nopol));
-            cmd.Parameters.Add(new SqlParameter("warna", warna));
-            cmd.Parameters.Add(new SqlParameter("jenis_motor", nama));
-            cmd.Parameters.Add(new SqlParameter("tahun_buat", waktu));
+
+            if (string.IsNullOrEmpty(nama) || string.IsNullOrEmpty(warna) || string.IsNullOrEmpty(idmotor))
+            {
+                MessageBox.Show("Harap isi semua field terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(idmotor, out _))
+            {
+                MessageBox.Show("Id Motor harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                using (SqlConnection koneksi = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        nama = cbxJenismotor.Text;
+                        warna = txtWarna.Text;
+                        nopol = txtNopol.Text;
+                        waktu = dateTahun.Value;
+                        idmotor = txtidMotor.Text;
+
+                        koneksi.Open();
+                        string str = "insert into dbo.motor (id_motor, no_pol, warna, jenis_motor, tahun_buat)" + "values(@id_motor, @no_pol, @warna, @jenis_motor, @tahun_buat)";
+                        SqlCommand cmd = new SqlCommand(str, koneksi);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add(new SqlParameter("id_motor", idmotor));
+                        cmd.Parameters.Add(new SqlParameter("no_pol", nopol));
+                        cmd.Parameters.Add(new SqlParameter("warna", warna));
+                        cmd.Parameters.Add(new SqlParameter("jenis_motor", nama));
+                        cmd.Parameters.Add(new SqlParameter("tahun_buat", waktu));
 
 
-            cmd.ExecuteNonQuery();
-            koneksi.Close();
+                        cmd.ExecuteNonQuery();
+                        koneksi.Close();
 
-            MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            refreshform();
+                        MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        refreshform();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

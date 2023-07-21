@@ -63,5 +63,17 @@ namespace final_pabd
             g.Show();
             this.Hide();
         }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pemiliikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Pemilik p = new Pemilik();
+            p.Show();
+            this.Hide();
+        }
     }
 }

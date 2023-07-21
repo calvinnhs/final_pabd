@@ -20,7 +20,23 @@ namespace final_pabd
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            string id_pelanggan = txtplgn.Text;
+            string nama_plgn = txtNama.Text;
+            string no_hp = txtNotelp.Text;
+            string no_ktp = txtNoktp.Text;
+            string alamat = txtAlamat.Text;
 
+            if (!int.TryParse(no_hp, out int no_hpInt))
+            {
+                MessageBox.Show("No. HP harus diisi dengan Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(no_ktp, out int no_ktpInt))
+            {
+                MessageBox.Show("No. KTP harus diisi dengan Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string upd = "UPDATE pelanggan SET id_pelanggan = @id_pelanggan, nama_plgn = @nama_plgn, no_hp = @no_hp, no_ktp = @no_ktp, alamat= @alamat where id_pelanggan = @id_pelanggan";
 
             using (SqlConnection conn = new SqlConnection(stringConnection))
@@ -137,29 +153,61 @@ namespace final_pabd
         private void btnInsert_Click(object sender, EventArgs e)
         {
             Nama = txtNama.Text;
-            Notelp = txtNotelp.Text; 
+            Notelp = txtNotelp.Text;
             Noktp = txtNoktp.Text;
             Idpelanggan = txtplgn.Text;
             Alamat = txtAlamat.Text;
             karyawan = cbxNama.Text;
 
-            koneksi.Open();
-            string str = "insert into dbo.pelanggan (nama_plgn, no_hp, no_ktp , Id_pelanggan, alamat, no_id)" + "values(@nama_plgn, @no_hp, @no_ktp , @Id_pelanggan, @alamat, @no_id)";
-            SqlCommand cmd = new SqlCommand(str, koneksi);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SqlParameter("nama_plgn", Nama));
-            cmd.Parameters.Add(new SqlParameter("no_hp", Notelp));
-            cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
-            cmd.Parameters.Add(new SqlParameter("Id_pelanggan", Idpelanggan));
-            cmd.Parameters.Add(new SqlParameter("alamat", Alamat));
-            cmd.Parameters.Add(new SqlParameter("no_id", karyawan));
 
-            cmd.ExecuteNonQuery();
-            koneksi.Close();
+            if (string.IsNullOrEmpty(Nama) || string.IsNullOrEmpty(Notelp) || string.IsNullOrEmpty(Noktp) || string.IsNullOrEmpty(Idpelanggan) || string.IsNullOrEmpty(Alamat)
+             || string.IsNullOrEmpty(karyawan))
+            {
+                MessageBox.Show("Harap isi semua field terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(Notelp, out int NotelpNumber))
+            {
+                MessageBox.Show("Nomor HP harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(Noktp, out _))
+            {
+                MessageBox.Show("Nomor Ktp harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(Idpelanggan, out _))
+            {
+                MessageBox.Show("Id Pelanggan harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                using (SqlConnection koneksi = new SqlConnection(stringConnection))
+                {
+                    try
+                    {
+                        koneksi.Open();
+                        string str = "insert into dbo.pelanggan (nama_plgn, no_hp, no_ktp , Id_pelanggan, alamat, no_id)" +
+                    "values(@nama_plgn, @no_hp, @no_ktp , @Id_pelanggan, @alamat, @no_id)";
+                        SqlCommand cmd = new SqlCommand(str, koneksi);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add(new SqlParameter("nama_plgn", Nama));
+                        cmd.Parameters.Add(new SqlParameter("no_hp", NotelpNumber));
+                        cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
+                        cmd.Parameters.Add(new SqlParameter("Id_pelanggan", Idpelanggan));
+                        cmd.Parameters.Add(new SqlParameter("alamat", Alamat));
+                        cmd.Parameters.Add(new SqlParameter("no_id", karyawan));
 
-            MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cmd.ExecuteNonQuery();
+                        koneksi.Close();
 
-            refreshform();
+                        MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        refreshform();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

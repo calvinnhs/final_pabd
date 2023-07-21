@@ -37,6 +37,7 @@
             this.dataKendaraanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataKaryawanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gudangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pemiliikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,12 +91,14 @@
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataKendaraanToolStripMenuItem,
             this.dataKaryawanToolStripMenuItem,
-            this.gudangToolStripMenuItem});
+            this.gudangToolStripMenuItem,
+            this.pemiliikToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(104, 24);
             this.toolStripDropDownButton1.Text = "Data Master";
+            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // dataKendaraanToolStripMenuItem
             // 
@@ -117,6 +120,13 @@
             this.gudangToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.gudangToolStripMenuItem.Text = "Gudang";
             this.gudangToolStripMenuItem.Click += new System.EventHandler(this.gudangToolStripMenuItem_Click);
+            // 
+            // pemiliikToolStripMenuItem
+            // 
+            this.pemiliikToolStripMenuItem.Name = "pemiliikToolStripMenuItem";
+            this.pemiliikToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pemiliikToolStripMenuItem.Text = "Pemiliik";
+            this.pemiliikToolStripMenuItem.Click += new System.EventHandler(this.pemiliikToolStripMenuItem_Click);
             // 
             // Form_menu
             // 
@@ -147,6 +157,7 @@
         private System.Windows.Forms.ToolStripMenuItem dataKendaraanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataKaryawanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gudangToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pemiliikToolStripMenuItem;
     }
 }
 

@@ -31,34 +31,45 @@ namespace final_pabd
             nama = txtnama.Text;
             stok = txtstok.Text;
 
-            if (ID == "" )
+            if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(nama) || string.IsNullOrEmpty(stok))
             {
-                MessageBox.Show("Masukkan ID", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Harap isi semua field terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if(stok == "")
+            else if (!int.TryParse(ID, out _))
             {
-                MessageBox.Show("Masukkan stok", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Id Gudang harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(stok, out _))
+            {
+                MessageBox.Show("Stok harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                koneksi.Open();
-                string str = "insert into dbo.gudang (nama_gudang, stok_motor, id_gudang)" + "values(@nama_gudang, @stok_motor, @id_gudang)";
-                SqlCommand cmd = new SqlCommand(str, koneksi);
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.Add(new SqlParameter("nama_gudang", nama));
-                cmd.Parameters.Add(new SqlParameter("stok_motor", stok));
-                cmd.Parameters.Add(new SqlParameter("id_gudang", ID));
+                using (SqlConnection koneksi = new SqlConnection(stringConnection))
+                {
+                    try
+                    {
+                        koneksi.Open();
+                        string str = "insert into dbo.gudang (nama_gudang, id_gudang, stok_motor) values (@nama_gudang, @id_gudang, @stok_motor)";
+                        SqlCommand cmd = new SqlCommand(str, koneksi);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add(new SqlParameter("nama_gudang", nama));
+                        cmd.Parameters.Add(new SqlParameter("id_gudang", ID));
+                        cmd.Parameters.Add(new SqlParameter("stok_motor", stok));
 
-                cmd.ExecuteNonQuery();
-                koneksi.Close();
+                        cmd.ExecuteNonQuery();
 
-                MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                refreshform();
-
+                        MessageBox.Show("Data berhasil disimpan", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        refreshform();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
 
-           
+
         }
 
         private void refreshform()
@@ -92,6 +103,14 @@ namespace final_pabd
 
         private void btnupdate_Click(object sender, EventArgs e)
         {
+           
+            string stok = txtstok.Text;
+
+            if (!int.TryParse(stok, out int stokInt))
+            {
+                MessageBox.Show("No HP harus diisi dengan Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string upd = "UPDATE gudang SET id_gudang = @id_gudang, stok_motor = @stok_motor, nama_gudang = @nama_gudang where id_gudang = @id_gudang";
 
             using (SqlConnection conn = new SqlConnection(stringConnection))
