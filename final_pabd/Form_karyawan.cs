@@ -61,22 +61,55 @@ namespace final_pabd
             Noktp = txtNoktp.Text;
             Noid = txtNoid.Text;
 
-            koneksi.Open();
-            string str = "insert into dbo.karyawan (nama_karyawan, no_telp, no_ktp , no_id)" + "values(@nama_karyawan, @no_telp, @no_ktp , @no_id)";
-            SqlCommand cmd = new SqlCommand(str, koneksi);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add(new SqlParameter("nama_karyawan", Nama));
-            cmd.Parameters.Add(new SqlParameter("no_telp", Notelp));
-            cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
-            cmd.Parameters.Add(new SqlParameter("no_id", Noid));
-        
 
-            cmd.ExecuteNonQuery();
-            koneksi.Close();
+            if (string.IsNullOrEmpty(Nama) || string.IsNullOrEmpty(Notelp) || string.IsNullOrEmpty(Noktp) || string.IsNullOrEmpty(Noid))
+            {
+                MessageBox.Show("Harap isi semua field terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(Notelp, out _))
+            {
+                MessageBox.Show("Nomor HP harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(Noktp, out _))
+            {
+                MessageBox.Show("Nomor Ktp harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (!int.TryParse(Noid, out _))
+            {
+                MessageBox.Show("Nomor ID harus berupa Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                using (SqlConnection koneksi = new SqlConnection(stringConnection))
+                {
+                    try
+                    {
+                        Nama = txtNama.Text;
+                        Notelp = txtNotelp.Text;
+                        Noktp = txtNoktp.Text;
+                        Noid = txtNoid.Text;
 
-            MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        koneksi.Open();
+                        string str = "insert into dbo.karyawan (nama_karyawan, no_telp, no_ktp , no_id)" + "values(@nama_karyawan, @no_telp, @no_ktp , @no_id)";
+                        SqlCommand cmd = new SqlCommand(str, koneksi);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add(new SqlParameter("nama_karyawan", Nama));
+                        cmd.Parameters.Add(new SqlParameter("no_telp", Notelp));
+                        cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
+                        cmd.Parameters.Add(new SqlParameter("no_id", Noid));
 
-            refreshform();
+
+                        cmd.ExecuteNonQuery();
+                        koneksi.Close();
+                        MessageBox.Show("data berhasil disimpan", "sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        refreshform();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)

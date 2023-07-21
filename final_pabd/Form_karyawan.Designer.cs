@@ -96,21 +96,21 @@
             // 
             // txtNama
             // 
-            this.txtNama.Location = new System.Drawing.Point(676, 121);
+            this.txtNama.Location = new System.Drawing.Point(676, 127);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(216, 22);
             this.txtNama.TabIndex = 4;
             // 
             // txtNotelp
             // 
-            this.txtNotelp.Location = new System.Drawing.Point(676, 163);
+            this.txtNotelp.Location = new System.Drawing.Point(676, 169);
             this.txtNotelp.Name = "txtNotelp";
             this.txtNotelp.Size = new System.Drawing.Size(216, 22);
             this.txtNotelp.TabIndex = 5;
             // 
             // txtNoid
             // 
-            this.txtNoid.Location = new System.Drawing.Point(676, 211);
+            this.txtNoid.Location = new System.Drawing.Point(676, 217);
             this.txtNoid.Name = "txtNoid";
             this.txtNoid.Size = new System.Drawing.Size(216, 22);
             this.txtNoid.TabIndex = 6;
@@ -185,10 +185,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("News706 BT", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(341, 30);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(225, 34);
+            this.label5.Size = new System.Drawing.Size(220, 32);
             this.label5.TabIndex = 14;
             this.label5.Text = "Data Karyawan";
             this.label5.Click += new System.EventHandler(this.label5_Click);
