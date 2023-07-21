@@ -151,70 +151,51 @@ namespace final_pabd
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 0)
+            string Noid = txtNoid.Text;
+            string Nama = txtNama.Text;
+            string Notelp = txtNotelp.Text;
+            string Noktp = txtNoktp.Text;
+            
+            
+            if (!int.TryParse(Notelp, out _))
             {
-                MessageBox.Show("Pilih baris data yang akan diperbarui", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No HP harus diisi dengan Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            string id = dataGridView1.SelectedRows[0].Cells["no_id"].Value.ToString();
-            string nmkrywn = txtNama.Text;
-            string noktp = txtNoktp.Text;
-            string notelp = txtNotelp.Text;
-
-            if (id == "")
+            if (!int.TryParse(Noktp, out _))
             {
-                MessageBox.Show("ID Suplier tidak valid", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No KTP harus diisi dengan Angka.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (nmkrywn == "")
-            {
-                MessageBox.Show("Masukkan Nama karyawan", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (notelp == "")
-            {
-                MessageBox.Show("Masukkan No Telepon", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (noktp == "")
-            {
-                MessageBox.Show("Masukkan no ktp", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
+            string upd = "UPDATE karyawan SET no_id = @no_id, nama_karyawan = @nama_karyawan, no_telp = @no_telp, no_ktp = @no_ktp where no_id = @no_id";
 
-            string sql = "UPDATE karyawan SET nama_karyawan = " +
-                "@nama_karyawan, no_id = @no_id, no_telp = @no_telp, no_ktp = @no_ktp WHERE no_id = @no_id";
-            using (SqlCommand command = new SqlCommand(sql, koneksi))
+            using (SqlConnection conn = new SqlConnection(stringConnection))
             {
-                command.Parameters.AddWithValue("@no_id", id);
-                command.Parameters.AddWithValue("@nama_karyawan", nmkrywn);
-                command.Parameters.AddWithValue("@no_ktp", noktp);
-                command.Parameters.AddWithValue("@no_telp", notelp);
-
-
-                try
+                using (SqlCommand cmd = new SqlCommand(upd, conn))
                 {
-                    koneksi.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+                    cmd.Parameters.Add(new SqlParameter("no_id", Noid));
+                    cmd.Parameters.Add(new SqlParameter("nama_karyawan", Nama));
+                    cmd.Parameters.Add(new SqlParameter("no_telp", Notelp));
+                    cmd.Parameters.Add(new SqlParameter("no_ktp", Noktp));
+
+
+                    try
                     {
-                        MessageBox.Show("Data berhasil diperbarui", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        koneksi.Close();
-                        refreshform();
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil di Updated");
                         DataGridView();
-                        
                     }
-                    else
+                    catch (SqlException ex)
                     {
-                        MessageBox.Show("Data tidak ditemukan.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("An error occured: " + ex.Message + " (Error Code: " + ex.Number + ")");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occured: " + ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                 
             }
         }
 
